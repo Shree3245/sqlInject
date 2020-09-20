@@ -1,11 +1,10 @@
 import time
 import signal
 import multiprocessing
-from urlparse import urlparse
+from urllib.parse import urlparse
 
-import std
-import sqlerrors
-from web import web
+from src.components import sqlerrors 
+from src.web import web
 
 
 def init():
@@ -32,7 +31,7 @@ def scan(urls):
             if all([child.ready() for child in childs]):
                 break
     except KeyboardInterrupt:
-        std.stderr("stopping sqli scanning process")
+        print("stopping sqli scanning process")
         pool.terminate()
         pool.join()
     else:
@@ -49,13 +48,13 @@ def scan(urls):
 def __sqli(url):
     """check SQL injection vulnerability"""
 
-    std.stdout("scanning {}".format(url), end="")
+    print("scanning {}".format(url))
 
     domain = url.split("?")[0]  # domain with path without queries
     queries = urlparse(url).query.split("&")
     # no queries in url
     if not any(queries):
-        print "" # move cursor to new line
+        print ("") # move cursor to new line
         return False, None
 
     payloads = ("'", "')", "';", '"', '")', '";', '`', '`)', '`;', '\\', "%27", "%%2727", "%25%27", "%60", "%5C")
@@ -65,8 +64,8 @@ def __sqli(url):
         if source:
             vulnerable, db = sqlerrors.check(source)
             if vulnerable and db != None:
-                std.showsign(" vulnerable")
+                print(" vulnerable")
                 return True, db
 
-    print ""  # move cursor to new line
+    print ("")  # move cursor to new line
     return False, None

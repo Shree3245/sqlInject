@@ -2,11 +2,10 @@
 
 import sys
 import urllib
-import urllib2
 import json
-from urlparse import urlparse
+from urllib.parse import urlparse
 
-from web import useragents
+from src.web import useragents
 
 
 def reverseip(url):
@@ -31,14 +30,14 @@ def reverseip(url):
     try:
         result = urllib2.urlopen(request).read()
 
-    except urllib2.HTTPError, e:
-        print >> sys.stderr, "[{}] HTTP error".format(e.code)
+    except urllib.HTTPError as e:
+        print ( "[{}] HTTP error".format(e.code))
 
-    except urllib2.URLError, e:
-        print >> sys.stderr, "URL error, {}".format(e.reason)
+    except urllib.URLError as e:
+        print ("URL error, {}".format(e.reason))
 
     except:
-        print >> sys.stderr, "HTTP exception"
+        print("HTTP exception")
 
     obj = json.loads(result)
 

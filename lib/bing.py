@@ -1,21 +1,8 @@
-#!/usr/bin/env python2
-#-*- coding: utf-8 -*-
-#
-#
-
-"""
-Author : Black Viking
-Version: 0.0.1
-
-https://gist.github.com/blackvkng/7487098fba261ac05f62c4676d33f350
-"""
-
 __name__    = 'python-bing'
 __version__ = "0.0.1"
 
 import re
 import urllib
-import urllib2
 
 class Bing:
     def __init__(self):
@@ -45,8 +32,8 @@ class Bing:
         :rtpye: str
         '''
 
-        request = urllib2.Request(URL, headers=self.default_headers())
-        resp    = urllib2.urlopen(request)
+        request = urllib.Request(URL, headers=self.default_headers())
+        resp    = urllib.urlopen(request)
 
         return resp.read()
 

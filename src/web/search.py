@@ -1,7 +1,7 @@
 # search vulnerabilities by dock
 
 import sys
-from urllib2 import HTTPError, URLError
+from urllib.error import HTTPError, URLError
 
 from lib import bing
 from lib import google
@@ -28,7 +28,7 @@ class Google(Search):
         except URLError:
             exit("[504] Gateway Timeout")
         except:
-            exit("Unknown error occurred")
+            exit("Unknown error occurred google")
         else:
             return urls
 
@@ -41,7 +41,7 @@ class Bing(Search):
         except URLError:
             exit("[504] Gateway Timeout")
         except:
-            exit("Unknown error occurred")
+            exit("Unknown error occurred bing")
 
 class Yahoo(Search):
     def search(self, query, pages=1):
@@ -52,4 +52,4 @@ class Yahoo(Search):
         except URLError:
             exit("[504] Gateway Timeout")
         except:
-            exit("Unknown error occurred")
+            exit("Unknown error occurred yahoo")

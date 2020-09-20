@@ -41,7 +41,7 @@ if sys.version_info[0] > 2:
 else:
     from cookielib import LWPCookieJar
     from urllib import quote_plus
-    from urllib2 import Request, urlopen
+    from urllib import Request, urlopen
     from urlparse import urlparse, parse_qs
 
 try:

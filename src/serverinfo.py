@@ -4,10 +4,9 @@ import time
 import signal
 import multiprocessing
 import bs4
-from urlparse import urlparse
+from urllib.parse import urlparse
 
-import std
-from web import web
+from src.web import web
 
 
 def init():
@@ -34,7 +33,7 @@ def check(urls):
             if all([child.ready() for child in childs]):
                 break
     except KeyboardInterrupt:
-        std.stderr("skipping server info scanning process")
+        print("skipping server info scanning process")
         pool.terminate()
         pool.join()
     else:
