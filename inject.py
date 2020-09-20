@@ -40,7 +40,7 @@ if __name__ == '__main__':
     # find random SQLi by dork
     if args.dork != None and args.engine != None:
         print('Searching for websites with given dork')
-
+        start_time = time.time()
         result = []
         pages = []
         # Get websites based on search engine
