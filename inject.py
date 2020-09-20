@@ -1,6 +1,6 @@
 import argparse
 from urllib.parse import urlparse
-from component import search
+from component.search import search
 from multiprocessing import Pool, TimeoutError, cpu_count
 from functools import partial
 # TODO: init engine instance and crawler instance
@@ -32,28 +32,25 @@ def printf(lista):
 
 if __name__ == '__main__':
     args = parser.parse_args()
-    string = args.search
+    string = args.dork
     engine = args.engine
     pages = args.page
-    proc = int(args.process)
 
     # find random SQLi by dork
     if args.dork != None and args.engine != None:
         print('Searching for websites with given dork')
-        start_time = time.time()
         result = []
-        pages = []
+        page = []
         # Get websites based on search engine
         for i in range(int(pages)):
-            pages.append(p*10)
-            p = Pool(proc)
+            page.append(i*10)
             print("#"*50)
-            print("Searching for: {} in {} page(s) of {} with {} process(es)".format(
-                str(string), str(page), str(engine), str(proc)))
+            print("Searching for: {} in {} page(s) of {}".format(
+                str(string), str(pages), str(engine)))
             print("#"*50)
             print("\n")
             request = partial(search, engine, string)
-            listAll = p.map(request, pages)
+            listAll = i.map(request, pages)
 
         for p in listAll:
             result += [u for u in p]
@@ -62,6 +59,4 @@ if __name__ == '__main__':
         print("\n")
         print("#"*50)
         print(" Number of urls : {}" . format(str(len(result))))
-        print(" Finished in : {} s" . format(
-            str(int(time.time() - start_time))))
         print("#"*50)
