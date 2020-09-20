@@ -2,13 +2,10 @@
 
 import sys
 from urllib.error import HTTPError, URLError
-
+import requests
 from lib import bing
 from lib import google
 from lib import yahoo
-
-bingsearch = bing.Bing()
-yahoosearch = yahoo.Yahoo()
 
 class Search:
     """basic search class that can be inherited by other search agents like Google, Yandex"""
