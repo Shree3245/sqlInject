@@ -43,6 +43,7 @@ if __name__ == '__main__':
         page = []
         # Get websites based on search engine
         for i in range(int(pages)):
+            i = Pool(1)
             page.append(i*10)
             print("#"*50)
             print("Searching for: {} in {} page(s) of {}".format(
@@ -60,3 +61,6 @@ if __name__ == '__main__':
         print("#"*50)
         print(" Number of urls : {}" . format(str(len(result))))
         print("#"*50)
+
+    else:
+        print('invalide search engine')
