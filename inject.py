@@ -11,7 +11,7 @@ parser.add_argument("-d", dest="dork", help="SQL injection dork",
 parser.add_argument("-e", dest="engine",
                     help="search engine [Bing, Google, and Yahoo]", type=str, metavar="bing, google, yahoo")
 parser.add_argument("-p", dest="page", help="number of websites to look for in search engine",
-                    type=int, default=10, metavar="100")
+                    type=int, default=1, metavar="100")
 parser.add_argument("-t", dest="target", help="scan target website",
                     type=str, metavar="www.example.com")
 parser.add_argument('-r', dest="reverse",
