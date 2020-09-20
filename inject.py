@@ -53,7 +53,7 @@ if __name__ == '__main__':
 
             request = search(engine, string, pages)
 
-        for p in listAll:
+        for p in request:
             result += [u for u in p]
             printf(set(result))
 
