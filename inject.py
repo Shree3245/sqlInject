@@ -43,15 +43,15 @@ if __name__ == '__main__':
         page = []
         # Get websites based on search engine
         for i in range(int(pages)):
-            i = Pool(1)
             page.append(i*10)
+            i = Pool(1)
             print("#"*50)
             print("Searching for: {} in {} page(s) of {}".format(
                 str(string), str(pages), str(engine)))
             print("#"*50)
             print("\n")
-            request = partial(search, engine, string)
-            listAll = i.map(request, pages)
+
+            request = search(engine, string, pages)
 
         for p in listAll:
             result += [u for u in p]
