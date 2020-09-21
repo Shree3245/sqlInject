@@ -16,8 +16,6 @@ class Google(Search):
         """search and return an array of urls"""
 
         urls = []
-        payload = {'q':string}
-        headers = {'User-agent': ua}
 
         try:
             for url in google.search(query, start=0, stop=pages):
