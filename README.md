@@ -33,8 +33,8 @@ inject
 **1. Multiple domain scanning with SQLi dork**  
 - it simply search multiple websites from given dork and scan the results one by one
 ```python
-python(3) inject.py -d <SQLI DORK> -e <SEARCH ENGINE>  
-python(3) inject.py -d "inurl:index.php?id=" -e google  
+python(3) inject.py -D <SQLI DORK> -e <SEARCH ENGINE>  
+python(3) inject.py -D "inurl:index.php?id=" -e google  
 ```
 
 **2. Targetted scanning**  
@@ -42,36 +42,36 @@ python(3) inject.py -d "inurl:index.php?id=" -e google
 - if only domain name is provided, it will crawl and get urls with query
 - then scan the urls one by one
 ```python
-python inject.py -t <URL>  
-python inject.py -t www.example.com  
-python inject.py -t www.example.com/index.php?id=1  
+python inject.py -T <URL>  
+python inject.py -T www.example.com  
+python inject.py -T www.example.com/index.php?id=1  
 ```
 
 **3. Reverse domain and scanning**  
 - do reverse domain and look for websites that hosted on same server as target url
 ```python
-python inject.py -t <URL> -r
+python inject.py -T <URL> -R
 ```
 
 **4. Dumping scanned result**
 - you can dump the scanned results as json by giving this argument
 ```python
-python inject.py -d <SQLI DORK> -e <SEARCH ENGINE> -o result.json
+python inject.py -D <SQLI DORK> -E <SEARCH ENGINE> -O result.json
 ```
 
 **View help**  
 ```python
 python inject.py --help
 
-usage: inject.py [-h] [-d D] [-e E] [-p P] [-t T] [-r]
+usage: inject.py [-h] [-D] [-E] [-P] [-T] [-R]
 
 optional arguments:
   -h, --help  show this help message and exit
-  -d D        SQL injection dork
-  -e E        search engine [Google only for now]
-  -p P        number of websites to look for in search engine
-  -t T        scan target website
-  -r          reverse domain
+  -D         SQL injection dork
+  -E         search engine [google bing or baidu]
+  -P         number of websites to look for in search engine
+  -T         scan target website
+  -R          reverse domain
 ```
 
 ---
