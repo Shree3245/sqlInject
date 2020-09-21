@@ -11,14 +11,10 @@ from fake_useragent import UserAgent
 from pprint import pprint
 from urllib import parse
 from src import std
-from src import scanner
 from scan import scan_sql_injection as scan
-from src import reverseip
-from src import serverinfo
-from src import web
-from src.crawler import Crawler
 
-crawler = Crawler()
+from src import web
+
 ua = UserAgent().random
 
 parser = argparse.ArgumentParser(
@@ -28,7 +24,7 @@ parser.add_argument(
 parser.add_argument(
     '-E', '--engine', help='Search engine to be used', default='bing')
 parser.add_argument(
-    '-P', '--page', help='Number of pages to search in', default='10')
+    '-P', '--page', help='Number of pages to search in', default='3')
 parser.add_argument('-Pr', '--process',
                     help='Number of parallel processes', default='1')
 parser.add_argument("-T", dest="target", help="scan target website", type=str, metavar="www.example.com")
