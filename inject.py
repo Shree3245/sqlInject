@@ -12,6 +12,7 @@ from pprint import pprint
 from urllib import parse
 from src import std
 from scan import scan_sql_injection as scan
+from urllib.request import Request, urlopen
 
 ua = UserAgent().random
 
@@ -22,7 +23,7 @@ parser.add_argument(
 parser.add_argument(
     '-E', '--engine', help='Search engine to be used', default='bing')
 parser.add_argument(
-    '-P', '--page', help='Number of pages to search in', default='3')
+    '-P', '--page', help='Number of pages to search in', default='2')
 parser.add_argument('-Pr', '--process',
                     help='Number of parallel processes', default='1')
 parser.add_argument("-T", dest="target", help="scan target website", type=str, metavar="www.example.com")
@@ -137,33 +138,43 @@ def dscan():
 if __name__ == '__main__':
     if results.dork != None and results.engine != None:
         websites = dscan()
-        print('asdf')
-        print([website.split(">")[0] for website in websites[0]])
+        
         if results.engine == 'google':
-            vulnerables = [scan(website.split(" > ")[0]) for website in websites[0]]
-            
+            for website in websites[0]:
+                try:
+                    scan(website.split(" > ")[0])
+                except:
+                    pass
+
         elif results.engine == 'bing':
-            vulnerables = [scan(website.split(" > ")[0]) for website in websites[0]]
-        print(vulnerables)
+            for website in websites[0]:
+                try:
+                    scan(website.split(" > ")[0])
+                except:
+                    pass
+
         
         
     elif results.target:
-        vulnerables = scan(results.target)
+        html_page = urlopen(results.target)
+        soup = BeautifulSoup(html_page, "lxml")
+        links = []
+        for link in soup.findAll('a'):
+            links.append(link.get('href'))
+        
+        for link in links:
+            try:
+                scan(link)
+            except:
+                pass
 
-        if not vulnerables:
-            exit(0)
-
-        # show domain information of target urls
-        print("getting server info of domains can take a few mins")
         
         
     else:
         parser.print_help()
     exit(0)
     
-    if args.output != None:
-        std.dumpjson(table_data, args.output)
-        std.stdout("Dumped result into %s" % args.output)
+    
                     
     
         
