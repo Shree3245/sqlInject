@@ -13,8 +13,6 @@ from urllib import parse
 from src import std
 from scan import scan_sql_injection as scan
 
-from src import web
-
 ua = UserAgent().random
 
 parser = argparse.ArgumentParser(
