@@ -12,7 +12,7 @@ def stdin(message, params, upper=False, lower=False):
     symbol = colored("[OPT]", "magenta")
     currentime = colored("[{}]".format(time.strftime("%H:%M:%S")), "green")
 
-    option = raw_input("{} {} {}: ".format(symbol, currentime, message))
+    option = input("{} {} {}: ".format(symbol, currentime, message))
 
     if upper:
         option = option.upper()
@@ -20,7 +20,7 @@ def stdin(message, params, upper=False, lower=False):
         option = option.lower()
 
     while option not in params:
-        option = raw_input("{} {} {}: ".format(symbol, currentime, message))
+        option = input("{} {} {}: ".format(symbol, currentime, message))
 
         if upper:
             option = option.upper()

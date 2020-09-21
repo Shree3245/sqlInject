@@ -1,4 +1,4 @@
-SQLiv
+inject
 ===
 
 ### Massive SQL injection scanner  
@@ -16,8 +16,8 @@ SQLiv
 ---
 
 **Installation**  
-1. git clone https://github.com/the-robot/sqliv.git
-2. sudo python2 setup.py -i
+1. git clone https://github.com/Shree3245/sqlInject.git
+
 
 > Dependencies  
 > - [bs4](https://pypi.python.org/pypi/bs4)  
@@ -33,8 +33,8 @@ SQLiv
 **1. Multiple domain scanning with SQLi dork**  
 - it simply search multiple websites from given dork and scan the results one by one
 ```python
-python sqliv.py -d <SQLI DORK> -e <SEARCH ENGINE>  
-python sqliv.py -d "inurl:index.php?id=" -e google  
+python(3) inject.py -d <SQLI DORK> -e <SEARCH ENGINE>  
+python(3) inject.py -d "inurl:index.php?id=" -e google  
 ```
 
 **2. Targetted scanning**  
@@ -42,28 +42,28 @@ python sqliv.py -d "inurl:index.php?id=" -e google
 - if only domain name is provided, it will crawl and get urls with query
 - then scan the urls one by one
 ```python
-python sqliv.py -t <URL>  
-python sqliv.py -t www.example.com  
-python sqliv.py -t www.example.com/index.php?id=1  
+python inject.py -t <URL>  
+python inject.py -t www.example.com  
+python inject.py -t www.example.com/index.php?id=1  
 ```
 
 **3. Reverse domain and scanning**  
 - do reverse domain and look for websites that hosted on same server as target url
 ```python
-python sqliv.py -t <URL> -r
+python inject.py -t <URL> -r
 ```
 
 **4. Dumping scanned result**
 - you can dump the scanned results as json by giving this argument
 ```python
-python sqliv.py -d <SQLI DORK> -e <SEARCH ENGINE> -o result.json
+python inject.py -d <SQLI DORK> -e <SEARCH ENGINE> -o result.json
 ```
 
 **View help**  
 ```python
-python sqliv.py --help
+python inject.py --help
 
-usage: sqliv.py [-h] [-d D] [-e E] [-p P] [-t T] [-r]
+usage: inject.py [-h] [-d D] [-e E] [-p P] [-t T] [-r]
 
 optional arguments:
   -h, --help  show this help message and exit
@@ -76,10 +76,10 @@ optional arguments:
 
 ---
 ### screenshots
-![1](https://raw.githubusercontent.com/Hadesy2k/sqliv/master/screenshots/1.png)
-![2](https://raw.githubusercontent.com/Hadesy2k/sqliv/master/screenshots/2.png)
-![3](https://raw.githubusercontent.com/Hadesy2k/sqliv/master/screenshots/3.png)
-![4](https://raw.githubusercontent.com/Hadesy2k/sqliv/master/screenshots/4.png)
+![1](https://raw.githubusercontent.com/Shree3245/inject/master/screenshots/1.png)
+![2](https://raw.githubusercontent.com/Shree3245/inject/master/screenshots/2.png)
+![3](https://raw.githubusercontent.com/Shree3245/inject/master/screenshots/3.png)
+![4](https://raw.githubusercontent.com/Shree3245/inject/master/screenshots/4.png)
 
 ---
 
