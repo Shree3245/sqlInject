@@ -81,8 +81,3 @@ optional arguments:
 ![3](https://raw.githubusercontent.com/Shree3245/inject/master/screenshots/3.png)
 ![4](https://raw.githubusercontent.com/Shree3245/inject/master/screenshots/4.png)
 
----
-
-### Development
-**TODO**  
-1. POST form SQLi vulnerability testing
