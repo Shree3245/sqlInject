@@ -11,7 +11,7 @@ from fake_useragent import UserAgent
 from pprint import pprint
 from urllib import parse
 from src import std
-from scan import scan_sql_injection as scan
+from src.scan import scan_sql_injection as scan
 from urllib.request import Request, urlopen
 
 ua = UserAgent().random
@@ -30,6 +30,8 @@ parser.add_argument("-T", dest="target", help="scan target website", type=str, m
 parser.add_argument('-R', dest="reverse", help="reverse domain", action='store_true')
 parser.add_argument('-O', dest="output", help="output result into json", type=str, metavar="result.json")
 parser.add_argument('-S', dest="store", action='store_true', help="output search even if there are no results")
+parser.add_argument('-Db', dest="db", help="db action", action='store_true')
+parser.add_argument('-A', dest="action", help="db action", action='store_true')
 
 results = parser.parse_args(sys.argv[1:])
 
@@ -164,7 +166,12 @@ if __name__ == '__main__':
         
         for link in links:
             try:
-                scan(link)
+                os.system("python3 sqlmap/sqlmap.py -u {} --dbs".format(link))
+                print("*"*50)
+                flags = input("If you would like to do more tests please give the right commands else press enter: ")
+                print("/n")
+                if flags:
+                    os.system("python3 sqlmap/sqlmap.py -u {} {}".format(link, flags))
             except:
                 pass
 
